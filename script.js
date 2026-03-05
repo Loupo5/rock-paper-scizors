@@ -35,9 +35,7 @@ let computerSelection = getComputerChoice()
 function playRound(humanChoice, computerChoice) {
     let humanScore = 0;
     let computerScore = 0;
-    humanChoice = getHumanChoice().toLowerCase();
-    computerChoice = getComputerChoice();
-    console.log(computerChoice)
+
     // evaluate when the human will get a score and when the computer
     if (humanChoice === computerChoice) {
         humanScore = humanScore;
@@ -50,7 +48,7 @@ function playRound(humanChoice, computerChoice) {
         }
     else if (humanChoice == "rock" && computerChoice == "paper"
         || humanChoice == "paper" && computerChoice == "scizors"
-        || humanChoice == "scizors" &&computerChoice == "rock") {
+        || humanChoice == "scizors" && computerChoice == "rock") {
             computerScore += 1;
         }
     if (humanScore > computerScore) {
@@ -67,7 +65,6 @@ function playGame(num) {
     for (let i=1; i<num; i++) {
         if (playRound(humanSelection, computerSelection) == humanSelection) {
             humanScore += 1;
-            break;
         }
         else if (playRound(humanSelection, computerSelection) == computerSelection) {
             computerScore += 1;

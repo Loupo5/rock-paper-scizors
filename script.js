@@ -29,29 +29,57 @@ function getHumanChoice() {
 }
 
 
-let humanScore = 0;
-let computerScore = 0;
-
-let humanChoice = getHumanChoice().toLowerCase();
-let computerChoice = getComputerChoice();
+let humanSelection = getHumanChoice()
+let computerSelection = getComputerChoice()
 
 function playRound(humanChoice, computerChoice) {
-    
+    let humanScore = 0;
+    let computerScore = 0;
+    humanChoice = getHumanChoice().toLowerCase();
+    computerChoice = getComputerChoice();
+    console.log(computerChoice)
     // evaluate when the human will get a score and when the computer
-    if (humanChoice == "rock" & computerChoice == "scizors"
-        || humanChoice == "paper" & computerChoice == "rock"
-        || humanChoice == "scizors" & computerChoice == "paper") {
+    if (humanChoice === computerChoice) {
+        humanScore = humanScore;
+        computerScore = computerScore;
+    }
+    else if (humanChoice == "rock" && computerChoice == "scizors"
+        || humanChoice == "paper" && computerChoice == "rock"
+        || humanChoice == "scizors" && computerChoice == "paper") {
             humanScore += 1;
         }
-    else if (humanChoice == "rock" & computerChoice == "paper"
-        || humanChoice == "paper" & computerChoice == "scizors"
-        || humanChoice == "scizors" & computerChoice == "rock") {
+    else if (humanChoice == "rock" && computerChoice == "paper"
+        || humanChoice == "paper" && computerChoice == "scizors"
+        || humanChoice == "scizors" &&computerChoice == "rock") {
             computerScore += 1;
         }
-   
-    return humanChoice, humanScore
+    if (humanScore > computerScore) {
+        return humanChoice;
+    }
+    else if (humanScore < computerScore) {
+        return computerChoice;
+    }
+}
 
+function playGame(num) {
+    let humanScore = 0
+    let computerScore = 0
+    for (let i=1; i<num; i++) {
+        if (playRound(humanSelection, computerSelection) == humanSelection) {
+            humanScore += 1;
+            break;
+        }
+        else if (playRound(humanSelection, computerSelection) == computerSelection) {
+            computerScore += 1;
+        }
+    }
+    if (humanScore > computerScore) {
+        console.log(`You won with ${humanScore} wins!!`)
+    }
+    else if (computerScore > humanScore) {
+        console.log(`The computer won with ${computerScore} wins!`)
+    }
 
 }
-console.log(getComputerChoice());
-console.log(playRound(humanChoice, computerChoice))
+
+playGame(5);

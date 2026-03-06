@@ -29,8 +29,6 @@ function getHumanChoice() {
 }
 
 
-let humanSelection = getHumanChoice()
-let computerSelection = getComputerChoice()
 
 function playRound(humanChoice, computerChoice) {
     let humanScore = 0;
@@ -62,7 +60,9 @@ function playRound(humanChoice, computerChoice) {
 function playGame(num) {
     let humanScore = 0
     let computerScore = 0
-    for (let i=1; i<num; i++) {
+    for (let i=0; i<num; i++) {
+        let humanSelection = getHumanChoice().toLowerCase();
+        let computerSelection = getComputerChoice();
         if (playRound(humanSelection, computerSelection) == humanSelection) {
             humanScore += 1;
         }
@@ -71,10 +71,10 @@ function playGame(num) {
         }
     }
     if (humanScore > computerScore) {
-        console.log(`You won with ${humanScore} wins!!`)
+        alert(`You won with ${humanScore} wins!!`)
     }
     else if (computerScore > humanScore) {
-        console.log(`The computer won with ${computerScore} wins!`)
+        alert(`The computer won with ${computerScore} wins!`)
     }
 
 }

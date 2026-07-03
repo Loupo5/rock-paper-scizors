@@ -1,0 +1,35 @@
+body {
+    background-color: palegoldenrod;
+}
+h1 {
+    font-size: 45px;
+    color: #F87523;
+    margin-bottom: 30px;
+}
+
+button {
+    padding: 45px 70px;
+    margin: 10px;
+    border-radius: 15%;
+}
+.container {
+    display: flex;
+    justify-content: center;
+}
+
+#main {
+    text-align: center;
+}
+
+#paper {
+    background-color: whitesmoke;
+}
+
+#scissors {
+    background-color: lightskyblue;
+    padding: 45px 65px;
+}
+
+#rock {
+    background-color: burlywood;
+}

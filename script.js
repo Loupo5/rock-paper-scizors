@@ -7,7 +7,7 @@ function getComputerChoice() {
     else if (randomInt > 33 && randomInt < 67) {
         computerChoice = "PAPER"
     }
-    else if (randomInt < 33) {
+    else if (randomInt < 34) {
         computerChoice = "SCISSORS";
     }  
     
@@ -23,31 +23,54 @@ If the value is invalid prompt the user again.
 
 
 */
+let humanChoice = ""
+let humanScore = 0
+let computerScore = 0
 
 const buttons = document.querySelectorAll("button")
 const div = document.querySelector(".results")
 
-function getHumanChoice() {
-    buttons.forEach(button => {
-        button.addEventListener("click", (e) => {
-            e.preventDefault()
-            return button.textContent
-            const result = document.createElement("p")
-            result.textContent = `Your choice: ${button.textContent} VS
-                                Computer choice: ${getComputerChoice()}`
+buttons.forEach(button => {
+    button.addEventListener("click", (e) => {
+        //e.preventDefault()
+        humanChoice =  button.textContent
+        computerChoice = getComputerChoice()
+
+        const result = document.createElement("p")
+            result.textContent = `Your choice: ${humanChoice} VS
+                                Computer choice: ${computerChoice}`
             div.appendChild(result)
-        })
-    }) 
-}
-getHumanChoice()
+        if (humanChoice == computerChoice) {
+            const message = document.createElement("p")
+            message.textContent = "It's a tie! No one got a point."
+            div.appendChild(message)
+        }
+        else if (humanChoice == "ROCK" && computerChoice == "SCISSORS" ||
+                humanChoice == "SCISSORS" && computerChoice == "PAPER" ||
+                humanChoice == "PAPER" && computerChoice == "ROCK") {
+                    const message = document.createElement("p")
+                    message.textContent = "Congrats, you won!"
+                    div.appendChild(message)
+                }
+        else {
+            const message = document.createElement("p")
+            message.textContent = "You lost! Skill issue"
+            div.appendChild(message)
+        }
+
+    })
+})
 
 
-
-function playRound(humanChoice, computerChoice) {
+function playRound(humanChoice, getComputerChoice) {
     let humanScore = 0;
     let computerScore = 0;
 
     // evaluate when the human will get a score and when the computer
+    const result = document.createElement("p")
+            result.textContent = `Your choice: ${button.textContent} VS
+                                Computer choice: ${getComputerChoice()}`
+            div.appendChild(result)
     if (humanChoice === computerChoice) {
         humanScore = humanScore;
         computerScore = computerScore;

@@ -15,14 +15,7 @@ function getComputerChoice() {
 }
 
 
-// Make the getHumanChoice function
-/*
-Ask the user for an input.
-Validate if the given input is valid - it must be either rock, paper or scizors.
-If the value is invalid prompt the user again.
 
-
-*/
 let humanChoice = ""
 let humanScore = 0
 let computerScore = 0
@@ -67,63 +60,31 @@ buttons.forEach(button => {
         }
         yourScore.textContent = `Your Score: ${humanScore}`
         enemyScore.textContent = `Computer Score: ${computerScore}`
+        if (humanScore == 3 || computerScore == 3) {
+            playGame(humanScore, computerScore)
 
-        
-
+        }
     })
 })
 
-
-function playRound(humanChoice, getComputerChoice) {
-    let humanScore = 0;
-    let computerScore = 0;
-
-    // evaluate when the human will get a score and when the computer
-    const result = document.createElement("p")
-            result.textContent = `Your choice: ${button.textContent} VS
-                                Computer choice: ${getComputerChoice()}`
-            div.appendChild(result)
-    if (humanChoice === computerChoice) {
-        humanScore = humanScore;
-        computerScore = computerScore;
+function playGame(humanScore, compScore) {
+    if (humanScore == 3) {
+        alert(`Congrats, you won the game with the final score of ${humanScore} to ${compScore}`)
     }
-    else if (humanChoice == "rock" && computerChoice == "scizors"
-        || humanChoice == "paper" && computerChoice == "rock"
-        || humanChoice == "scizors" && computerChoice == "paper") {
-            humanScore += 1;
-        }
-    else if (humanChoice == "rock" && computerChoice == "paper"
-        || humanChoice == "paper" && computerChoice == "scizors"
-        || humanChoice == "scizors" && computerChoice == "rock") {
-            computerScore += 1;
-        }
-    if (humanScore > computerScore) {
-        return humanChoice;
+    else if (compScore == 3) {
+        alert(`Sadly you lost to the computer(loser) with the final score of ${compScore} to ${humanScore}`)
     }
-    else if (humanScore < computerScore) {
-        return computerChoice;
-    }
-}
-
-function playGame(num) {
-    let humanScore = 0
-    let computerScore = 0
-    for (let i=0; i<num; i++) {
-        let humanSelection = getHumanChoice().toLowerCase();
-        let computerSelection = getComputerChoice();
-        if (playRound(humanSelection, computerSelection) == humanSelection) {
-            humanScore += 1;
-        }
-        else if (playRound(humanSelection, computerSelection) == computerSelection) {
-            computerScore += 1;
-        }
-    }
-    if (humanScore > computerScore) {
-        alert(`You won with ${humanScore} wins!!`)
-    }
-    else if (computerScore > humanScore) {
-        alert(`The computer won with ${computerScore} wins!`)
-    }
+    resetGame()
 
 }
+function resetGame() {
+    humanScore = 0
+    computerScore = 0
+    yourScore.textContent = "Your Score: 0";
+    enemyScore.textContent = "Computer Score: 0";
+    div.textContent = "";
+}
+
+
+
 

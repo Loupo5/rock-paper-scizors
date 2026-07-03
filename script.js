@@ -27,6 +27,9 @@ let humanChoice = ""
 let humanScore = 0
 let computerScore = 0
 
+const yourScore = document.querySelector("#humanScore")
+const enemyScore = document.querySelector("#computerScore")
+
 const buttons = document.querySelectorAll("button")
 const div = document.querySelector(".results")
 
@@ -44,6 +47,7 @@ buttons.forEach(button => {
             const message = document.createElement("p")
             message.textContent = "It's a tie! No one got a point."
             div.appendChild(message)
+            message.classList.add("bold")
         }
         else if (humanChoice == "ROCK" && computerChoice == "SCISSORS" ||
                 humanChoice == "SCISSORS" && computerChoice == "PAPER" ||
@@ -51,12 +55,20 @@ buttons.forEach(button => {
                     const message = document.createElement("p")
                     message.textContent = "Congrats, you won!"
                     div.appendChild(message)
+                    humanScore += 1
+                    message.classList.add("bold")
                 }
         else {
             const message = document.createElement("p")
             message.textContent = "You lost! Skill issue"
             div.appendChild(message)
+            computerScore += 1
+            message.classList.add("bold")
         }
+        yourScore.textContent = `Your Score: ${humanScore}`
+        enemyScore.textContent = `Computer Score: ${computerScore}`
+
+        
 
     })
 })

@@ -2,13 +2,13 @@ function getComputerChoice() {
     let computerChoice = ""
     let randomInt = Math.floor(Math.random() * 100);
     if (randomInt > 66) {
-        computerChoice = "rock";
+        computerChoice = "ROCK";
     }
     else if (randomInt > 33 && randomInt < 67) {
-        computerChoice = "paper"
+        computerChoice = "PAPER"
     }
     else if (randomInt < 33) {
-        computerChoice = "scizors";
+        computerChoice = "SCISSORS";
     }  
     
     return computerChoice
@@ -25,11 +25,21 @@ If the value is invalid prompt the user again.
 */
 
 const buttons = document.querySelectorAll("button")
+const div = document.querySelector(".results")
 
 function getHumanChoice() {
-    let humanChoice = prompt("Pick rock, paper or scizors: ");
-    return humanChoice;
+    buttons.forEach(button => {
+        button.addEventListener("click", (e) => {
+            e.preventDefault()
+            return button.textContent
+            const result = document.createElement("p")
+            result.textContent = `Your choice: ${button.textContent} VS
+                                Computer choice: ${getComputerChoice()}`
+            div.appendChild(result)
+        })
+    }) 
 }
+getHumanChoice()
 
 
 
